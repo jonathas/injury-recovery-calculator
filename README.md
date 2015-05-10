@@ -26,3 +26,16 @@ Implement the calculateRecoveryDate method. It takes the start time and the hour
 Try to avoid using a library that is not part of the language.
 
 A unit tested solution is preferred.
+
+Instructions
+------------
+
+Install the dependencies: composer install
+
+Run the tests: php vendor/bin/phpunit tests
+
+Ways to run the project: 
+
+1) php injury-recovery-calculator.php '10:00 am' 10
+
+2) php -S localhost:8080
