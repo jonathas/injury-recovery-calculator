@@ -9,8 +9,8 @@ if (PHP_SAPI === 'cli')
 }
 else
 {
-    $argument1 = (isset($_GET['startTime'])) ? $_GET['startTime'] : "";
-    $argument2 = (isset($_GET['hoursNeeded'])) ? $_GET['hoursNeeded'] : "";
+    $argument1 = (isset($_POST['startTime'])) ? $_POST['startTime'] : "";
+    $argument2 = (isset($_POST['hoursNeeded'])) ? $_POST['hoursNeeded'] : "";
 }
 
 if($argument1 === "" || $argument2 === "")

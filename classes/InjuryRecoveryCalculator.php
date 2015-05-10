@@ -18,7 +18,7 @@ class InjuryRecoveryCalculator {
         {
             //Here's our doctor
             $doc = new Doctor();
-            $startDateTime = date('Y-m-d') . " " . $startTime;
+            $startDateTime = date('Y-m-d') . " " . strtolower($startTime);
             $dateTime = DateTime::createFromFormat("Y-m-d h:i a", $startDateTime);
 
             if(isDateValid($startDateTime) === false)
