@@ -85,4 +85,32 @@ class InjuryRecoveryCalculatorTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(isDateValid($startDateTime));
     }
 
+    /**
+     * @covers              InjuryRecoveryCalculator
+     */
+    public function testDateTimeDistributionOfHoursNeeded()
+    {
+        $startTime = "10:00 am";
+        //Ex: 04:00 pm on Wednesday, May 13th 2015
+        $dateTime = DateTime::createFromFormat("h:i a \\o\\n l, F jS Y", $startTime . " " . date(" \\o\\n l, F jS Y"));
+        $hoursNeeded = 18; //3 days of work for the doctor
+
+        switch($dateTime->format("w")) {
+            //Sunday
+            case 0:
+                $dateTime->add(new DateInterval('P3DPT6H'));
+                break;
+            //Saturday
+            case 6:
+                $dateTime->add(new DateInterval('P4DPT6H'));
+                break;
+            //Friday
+            case 5:
+                $dateTime->add(new DateInterval('P4DPT6H'));
+                break;
+        }
+
+        $this->assertEquals($this->irc->calculateRecoveryDate($startTime, $hoursNeeded), $dateTime->format("h:i a \\o\\n l, F jS Y"));
+    }
+
 }

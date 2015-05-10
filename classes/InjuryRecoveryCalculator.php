@@ -15,7 +15,7 @@ class InjuryRecoveryCalculator {
     public function calculateRecoveryDate($startTime, $hoursNeeded)
     {
         //Here's our doctor
-        $doc = new Doctor();
+        $doctor = new Doctor();
         $startDateTime = date('Y-m-d') . " " . strtolower($startTime);
         $dateTime = DateTime::createFromFormat("Y-m-d h:i a", $startDateTime);
 
@@ -39,7 +39,7 @@ class InjuryRecoveryCalculator {
                 continue; //Ok, let's go to the next day
             }
 
-            $remainingToday = $doc->getRemainingWorkHours($dateTime);
+            $remainingToday = $doctor->getRemainingWorkHours($dateTime);
 
             //The doctor has more hours today than what we need
             if($remainingToday > $hoursNeeded)
@@ -50,12 +50,19 @@ class InjuryRecoveryCalculator {
             else
             {
                 $dateTime->add(new DateInterval('PT' . $remainingToday . 'H'));
+
                 $hoursNeeded -= $remainingToday;
+
+                if($hoursNeeded > 0) {
+                    //add a day but reset the time
+                    $dateTime->add(new DateInterval('P1D'));
+                    $dateTime->sub(new DateInterval('PT' . $doctor->getShiftDurationTime() . 'H'));
+                }
             }
 
         }
 
-        return $dateTime->format("h:i a \\o\\n l, F jS Y") . "\n";
+        return $dateTime->format("h:i a \\o\\n l, F jS Y");
 
     }
 

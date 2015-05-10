@@ -21,7 +21,7 @@ try {
 
     $irc = new InjuryRecoveryCalculator();
 
-    print $irc->calculateRecoveryDate($args[0], $args[1]);
+    print $irc->calculateRecoveryDate($args[0], $args[1]) . "\n";
 
 } catch (Exception $e) {
     print $e->getMessage();
