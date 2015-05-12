@@ -108,6 +108,12 @@ class InjuryRecoveryCalculatorTest extends PHPUnit_Framework_TestCase
             case 5:
                 $dateTime->add(new DateInterval('P4DPT6H'));
                 break;
+            //Thursday
+            case 4:
+                $dateTime->add(new DateInterval('P5DPT6H'));
+                break;
+            default:
+                $dateTime->add(new DateInterval('P2DPT6H'));
         }
 
         $this->assertEquals($this->irc->calculateRecoveryDate($startTime, $hoursNeeded), $dateTime->format("h:i a \\o\\n l, F jS Y"));
