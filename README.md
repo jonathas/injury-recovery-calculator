@@ -1,6 +1,8 @@
 Injury recovery calculator
 ==========================
 
+[![Build Status](https://travis-ci.org/jonathas/injury-recovery-calculator.svg?branch=master)](https://travis-ci.org/jonathas/injury-recovery-calculator)
+
 A football player needs t hours to recover from an injury. For a full recovery, he needs to receive t hours of special treatment from the team’s doctor. A user can submit new injuries to the application, which then calculates the exact date and time the player will be able to play again.
 
 The rules
