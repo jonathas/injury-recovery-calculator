@@ -110,7 +110,7 @@ class InjuryRecoveryCalculatorTest extends PHPUnit_Framework_TestCase
                 break;
             //Thursday
             case 4:
-                $dateTime->add(new DateInterval('P5DPT6H'));
+                $dateTime->add(new DateInterval('P4DPT6H'));
                 break;
             default:
                 $dateTime->add(new DateInterval('P2DPT6H'));
